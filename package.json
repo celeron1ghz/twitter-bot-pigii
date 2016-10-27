@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "pigiiiii!!!!!",
   "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
     "serverless": "^1.0.3"
   }
 }

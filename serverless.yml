@@ -23,8 +23,10 @@ provider:
 
 package:
   exclude:
-    - event.json
     - .*
+    - test/
+    - event.json
+    - package.json
 
 functions:
   pigii:
