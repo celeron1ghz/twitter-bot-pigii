@@ -1,0 +1,8 @@
+{
+  "name": "rubychan",
+  "version": "1.0.0",
+  "description": "pigiiiii!!!!!",
+  "devDependencies": {
+    "serverless": "^1.0.3"
+  }
+}
