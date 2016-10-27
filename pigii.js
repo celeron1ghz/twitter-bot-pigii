@@ -8,7 +8,7 @@ exports.random_length_string = (str) => {
     return this.repeat(str, repeat);
 };
 
-exports.random_pigii_string = (str) => {
+exports.random_pigii_string = () => {
     return [
         'ピギィ',
         this.random_length_string('ィ'),
