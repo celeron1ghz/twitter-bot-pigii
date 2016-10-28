@@ -3,12 +3,14 @@
 var MINUTES = 0;
 var SECONDS = 0;
 
-let pigii = require('./pigii.js');
-let sleep = require('sleep-async')();
+let twitter = require('twitter');
+let sleep   = require('sleep-async')();
+let pigii   = require('./pigii.js');
+
+let config  = require('./config.js');
+let client  = new twitter(config);
 
 module.exports.pigii = (event, context, callback) => {
-    console.log("invoked.");
-
     let now = new Date();
     let targetTime = new Date(now.getTime());
     targetTime.setHours(targetTime.getHours() + 1);
@@ -24,10 +26,21 @@ module.exports.pigii = (event, context, callback) => {
         return;
     }
 
-    console.log('tweet after ' + diff + 'millisec...');
+    console.log('tweet after ' + diff + ' millisec...');
 
     sleep.sleep(diff, () => {
         console.log("let's pigii!!!!!");
-        callback(null, { message: pigii.random_pigii_string() });
+
+        client.post('statuses/update', {
+            status: pigii.random_pigii_string()
+        }, (error, tweet, response) => {
+            if (error)  {
+                console.log(error);
+                callback(null, error);
+            } else {
+                console.log("Posted a tweet #" + tweet.id + " --> " + tweet.text);
+                callback(null, { id: tweet.id, tweet: tweet.text });
+            }   
+        });
     });
 };
