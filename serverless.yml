@@ -16,7 +16,8 @@ package:
 functions:
   pigii:
     handler: handler.pigii
-    memorySize: 128
+    description: rubychan
     timeout: 300
+    memorySize: 128
     events:
       - schedule: "cron(58 2,14 * * ? *)"
