@@ -5,6 +5,7 @@ provider:
   runtime: nodejs4.3
   stage: dev
   region: us-east-1
+  deploymentBucket: serverless-upload-us-east-1
 
 package:
   exclude:
