@@ -1,14 +1,14 @@
 'use strict';
 
-var MINUTES = 0;
-var SECONDS = 0;
+const MINUTES = 0;
+const SECONDS = 0;
 
-let twitter = require('twitter');
-let sleep   = require('sleep-async')();
-let pigii   = require('./pigii.js');
+const twitter = require('twitter');
+const sleep   = require('sleep-async')();
+const pigii   = require('./pigii.js');
 require('date-utils');
 
-let client  = new twitter({
+const client  = new twitter({
     consumer_key:        process.env.PIGII_CONSUMER_KEY,
     consumer_secret:     process.env.PIGII_CONSUMER_SECRET,
     access_token_key:    process.env.PIGII_ACCESS_TOKEN_KEY,
@@ -18,16 +18,16 @@ let client  = new twitter({
 Date.toString = () => { return this.toFormat("YYYY-MM-DD HH24:MI:SS") + this.getMilliseconds() };
 
 module.exports.pigii = (event, context, callback) => {
-    let now = new Date();
-    let targetTime = new Date(now.getTime());
+    const now = new Date();
+    const targetTime = new Date(now.getTime());
     targetTime.setHours(targetTime.getHours() + 1);
     targetTime.setMinutes(MINUTES);
     targetTime.setSeconds(SECONDS);
 
-    let diff = targetTime.getTime() - now.getTime();
+    const diff = targetTime.getTime() - now.getTime();
 
     if (diff >= 300000) {
-        let mess = new Date() + ": Too far to invoke. invoke in 30 sec. sec=" + diff;
+        const mess = new Date() + ": Too far to invoke. invoke in 30 sec. sec=" + diff;
         console.log(mess);
         callback(null, { message: mess });
         return;
