@@ -24,7 +24,7 @@ module.exports.pigii = (event, context, callback) => {
     targetTime.setMinutes(MINUTES);
     targetTime.setSeconds(SECONDS);
 
-    const diff = targetTime.getTime() - now.getTime();
+    let diff = targetTime.getTime() - now.getTime();
 
     if (diff >= 300000) {
         const mess = new Date() + ": Too far to invoke. invoke in 30 sec. sec=" + diff;
