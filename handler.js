@@ -8,8 +8,12 @@ let sleep   = require('sleep-async')();
 let pigii   = require('./pigii.js');
 require('date-utils');
 
-let config  = require('./config.js');
-let client  = new twitter(config);
+let client  = new twitter({
+    consumer_key:        process.env.PIGII_CONSUMER_KEY,
+    consumer_secret:     process.env.PIGII_CONSUMER_SECRET,
+    access_token_key:    process.env.PIGII_ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.PIGII_ACCESS_TOKEN_SECRET,
+});
 
 Date.toString = () => { return this.toFormat("YYYY-MM-DD HH24:MI:SS") + this.getMilliseconds() };
 

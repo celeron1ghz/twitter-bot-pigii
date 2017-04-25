@@ -22,3 +22,8 @@ functions:
     memorySize: 128
     events:
       - schedule: "cron(58 2,14 * * ? *)"
+    environment:
+      PIGII_CONSUMER_KEY:        ${file(kms.js):kms.PIGII_CONSUMER_KEY}
+      PIGII_CONSUMER_SECRET:     ${file(kms.js):kms.PIGII_CONSUMER_SECRET}
+      PIGII_ACCESS_TOKEN_KEY:    ${file(kms.js):kms.PIGII_ACCESS_TOKEN_KEY}
+      PIGII_ACCESS_TOKEN_SECRET: ${file(kms.js):kms.PIGII_ACCESS_TOKEN_SECRET}
