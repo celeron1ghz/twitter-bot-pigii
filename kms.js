@@ -9,7 +9,7 @@ module.exports.kms = () => {
         'PIGII_ACCESS_TOKEN_KEY',
         'PIGII_ACCESS_TOKEN_SECRET'
     ].forEach(key => {
-        const cred = exec(`credstash -r ap-northeast-1 get ${key}`).toString();
+        const cred = exec(`credstash -r ap-northeast-1 get ${key}`).toString().replace("\n", "");
         ret[key] = cred;
     })
 
