@@ -12,7 +12,7 @@ const client  = new twitter({
     access_token_secret: process.env.PIGII_ACCESS_TOKEN_SECRET,
 });
 
-module.exports.pigii = (event, context, callback) => {
+module.exports.main = (event, context, callback) => {
     Promise.resolve()
         .then(data => {
             const now = new Date();
