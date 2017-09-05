@@ -1,4 +1,4 @@
-# twitter-bot-pigii-dev-main
+# twitter-bot-pigii
 黒澤ルビィちゃんが12時にピギィと鳴く。
 
 
