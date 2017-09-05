@@ -1,4 +1,4 @@
-service: twitter-bot
+service: twitter-bot-pigii
 
 provider:
   name: aws
