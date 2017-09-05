@@ -4,8 +4,8 @@ provider:
   name: aws
   runtime: nodejs6.10
   stage: dev
-  region: us-east-1
-  deploymentBucket: serverless-upload-us-east-1
+  region: ap-northeast-1
+  deploymentBucket: serverless-upload-ap-northeast-1
   versionFunctions: false
   iamRoleStatements:
     - Effect: Allow
