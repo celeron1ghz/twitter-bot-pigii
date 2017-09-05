@@ -12,7 +12,7 @@ credstash -r ap-northeast-1 put -a PIGII_ACCESS_TOKEN_SECRET ...
 
 ## serverlessでセットアップ
 git clone https://github.com/celeron1ghz/twitter-bot-pigii.git
-cd twitter-bot-mimin
+cd twitter-bot-pigii
 sls deploy
 ```
 
