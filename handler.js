@@ -3,7 +3,6 @@
 const MINUTES = 0;
 const SECONDS = 0;
 const twitter = require('twitter');
-const sleep   = require('sleep-async')();
 const pigii   = require('./pigii.js');
 const client  = new twitter({
     consumer_key:        process.env.PIGII_CONSUMER_KEY,
@@ -30,14 +29,12 @@ module.exports.main = (event, context, callback) => {
             // millisec precision calculating
             diff = diff - 1000 + (1000 - now.getMilliseconds());
             console.log('tweet after ' + diff + ' millisec...');
-            return new Promise((resolve,reject) => sleep.sleep(diff, resolve));
+            return new Promise((resolve,reject) => setTimeout(diff, resolve));
         })
         .then(data =>
             new Promise((resolve,reject) => {
                 console.log("let's pigii!!!!!");
-                client.post('statuses/update', { status: pigii.random_pigii_string() }, (error, tweet, response) => {
-                    if (error) { reject(error) } else { resolve(tweet) }
-                });
+                return client.post('statuses/update', { status: pigii.random_pigii_string() })
             })
         )
         .then(data => {
@@ -45,7 +42,7 @@ module.exports.main = (event, context, callback) => {
             callback(null, data);
         })
         .catch(err => {
-            console.log("error happen.", err);
+            console.log("error happen:", err);
             callback(err);
         });
 };
