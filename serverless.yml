@@ -7,6 +7,18 @@ provider:
   region: us-east-1
   deploymentBucket: serverless-upload-us-east-1
   versionFunctions: false
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - kms:Decrypt
+      Resource: "${s3:serverless-upload-ap-northeast-1/credstash_kms_key_arn}"
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:Query
+        - dynamodb:Scan
+      Resource:
+        Fn::Join: [ ":", ["arn:aws:dynamodb", { Ref: AWS::Region }, { Ref: AWS::AccountId }, "table/credential-store"]]
 
 functions:
   main:
@@ -16,8 +28,6 @@ functions:
     memorySize: 128
     events:
       - schedule: "cron(58 2,14 * * ? *)"
-    environment:
-      PIGII_CONSUMER_KEY:        ${file(kms.js):kms.PIGII_CONSUMER_KEY}
-      PIGII_CONSUMER_SECRET:     ${file(kms.js):kms.PIGII_CONSUMER_SECRET}
-      PIGII_ACCESS_TOKEN_KEY:    ${file(kms.js):kms.PIGII_ACCESS_TOKEN_KEY}
-      PIGII_ACCESS_TOKEN_SECRET: ${file(kms.js):kms.PIGII_ACCESS_TOKEN_SECRET}
+
+resources:
+  Description: rubychan
