@@ -31,7 +31,7 @@ module.exports.main = (event, context, callback) => {
         // millisec precision calculating
         diff = diff - 1000 + (1000 - now.getMilliseconds());
         console.log('tweet after ' + diff + ' millisec...');
-        yield new Promise((resolve,reject) => setTimeout(diff, resolve));
+        yield new Promise((resolve,reject) => setTimeout(resolve, diff));
 
         console.log("let's pigii!!!!!");
         const data = yield client.post('statuses/update', { status: pigii.random_pigii_string() })
