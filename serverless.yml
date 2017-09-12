@@ -23,11 +23,11 @@ provider:
 functions:
   main:
     handler: handler.main
-    description: rubychan
+    description: rubychan cry to twitter every 12 o'clock
     timeout: 300
     memorySize: 128
     events:
       - schedule: "cron(58 2,14 * * ? *)"
 
 resources:
-  Description: rubychan
+  Description: rubychan cry to twitter every 12 o'clock
