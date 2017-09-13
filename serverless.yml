@@ -31,3 +31,7 @@ functions:
 
 resources:
   Description: rubychan cry to twitter every 12 o'clock
+  Resources:
+    MainLogGroup:
+      Properties:
+        RetentionInDays: 14
