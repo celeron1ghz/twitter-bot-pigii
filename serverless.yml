@@ -34,4 +34,4 @@ resources:
   Resources:
     MainLogGroup:
       Properties:
-        RetentionInDays: 14
+        RetentionInDays: 7
