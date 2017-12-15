@@ -11,10 +11,10 @@ const ssm = new aws.SSM();
 module.exports.main = (event, context, callback) => {
     vo(function*(){
         const client  = new twitter({
-            consumer_key:        (yield ssm.getParameter({ Name: '/pigii/consumer_key',        WithDecryption: true }).promise() ).Value,
-            consumer_secret:     (yield ssm.getParameter({ Name: '/pigii/consumer_secret',     WithDecryption: true }).promise() ).Value,
-            access_token_key:    (yield ssm.getParameter({ Name: '/pigii/access_token_key',    WithDecryption: true }).promise() ).Value,
-            access_token_secret: (yield ssm.getParameter({ Name: '/pigii/access_token_secret', WithDecryption: true }).promise() ).Value,
+            consumer_key:        (yield ssm.getParameter({ Name: '/pigii/consumer_key',        WithDecryption: true }).promise() ).Parameter.Value,
+            consumer_secret:     (yield ssm.getParameter({ Name: '/pigii/consumer_secret',     WithDecryption: true }).promise() ).Parameter.Value,
+            access_token_key:    (yield ssm.getParameter({ Name: '/pigii/access_token_key',    WithDecryption: true }).promise() ).Parameter.Value,
+            access_token_secret: (yield ssm.getParameter({ Name: '/pigii/access_token_secret', WithDecryption: true }).promise() ).Parameter.Value,
         });
 
         const now = new Date();
