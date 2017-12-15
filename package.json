@@ -4,7 +4,6 @@
   "description": "pigii!!!!!!",
   "dependencies": {
     "aws-sdk": "^2.108.0",
-    "credstash-promise": "^2.1.2",
     "twitter": "^1.7.1",
     "vo": "^4.0.2"
   },

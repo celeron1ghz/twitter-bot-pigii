@@ -4,16 +4,17 @@ const MINUTES = 0;
 const SECONDS = 0;
 const twitter = require('twitter');
 const pigii = require('./pigii.js');
-const cred = require('credstash-promise');
 const vo = require('vo');
+const aws = require('aws-sdk');
+const ssm = new aws.SSM();
 
 module.exports.main = (event, context, callback) => {
     vo(function*(){
         const client  = new twitter({
-            consumer_key:        yield cred.fetchCred('PIGII_CONSUMER_KEY'),
-            consumer_secret:     yield cred.fetchCred('PIGII_CONSUMER_SECRET'),
-            access_token_key:    yield cred.fetchCred('PIGII_ACCESS_TOKEN_KEY'),
-            access_token_secret: yield cred.fetchCred('PIGII_ACCESS_TOKEN_SECRET'),
+            consumer_key:        (yield ssm.getParameter({ Name: '/pigii/consumer_key',        WithDecryption: true }).promise() ).Value,
+            consumer_secret:     (yield ssm.getParameter({ Name: '/pigii/consumer_secret',     WithDecryption: true }).promise() ).Value,
+            access_token_key:    (yield ssm.getParameter({ Name: '/pigii/access_token_key',    WithDecryption: true }).promise() ).Value,
+            access_token_secret: (yield ssm.getParameter({ Name: '/pigii/access_token_secret', WithDecryption: true }).promise() ).Value,
         });
 
         const now = new Date();
