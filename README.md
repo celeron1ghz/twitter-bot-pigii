@@ -10,6 +10,7 @@ Set these value to `EC2 Parameter Store`.
  * `/pigii/access_token_key`: Twitter's access token
  * `/pigii/access_token_secret`: Twitter's access secret
 
+
 ## SETUP SERVERLESS SCRIPT
 ```
 git clone https://github.com/celeron1ghz/twitter-bot-pigii.git
