@@ -2,16 +2,15 @@
 黒澤ルビィちゃんが12時にピギィと鳴く。
 
 
-## SETUP
-### 環境変数の設定
-下記の値をEC2 Parameter Storeに設定する。
+## SETUP ENVIRONMENT VARIABLES
+Set these value to `EC2 Parameter Store`.
 
- * `PIGII_CONSUMER_KEY`: Twitterのconsumer key
- * `PIGII_CONSUMER_SECRET`: Twitterのconsumer secret
- * `PIGII_ACCESS_TOKEN_KEY`: Twitterのaccess token
- * `PIGII_ACCESS_TOKEN_SECRET`: Twitterのaccess secret
+ * `/pigii/consumer_key`: Twitter's consumer key
+ * `/pigii/consumer_secret`: Twitter's consumer secret
+ * `/pigii/access_token_key`: Twitter's access token
+ * `/pigii/access_token_secret`: Twitter's access secret
 
-### serverlessでセットアップ
+## SETUP SERVERLESS SCRIPT
 ```
 git clone https://github.com/celeron1ghz/twitter-bot-pigii.git
 cd twitter-bot-pigii
