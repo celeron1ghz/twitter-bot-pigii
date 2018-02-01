@@ -1,5 +1,5 @@
 # twitter-bot-pigii
-黒澤ルビィちゃんが12時にピギィと鳴く。
+**Ruby Kurosawa** cries **'pigii'** every 12 o'clock.
 
 
 ## SETUP ENVIRONMENT VARIABLES
