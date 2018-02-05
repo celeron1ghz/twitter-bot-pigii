@@ -34,10 +34,9 @@ module.exports.main = (event, context, callback) => {
         console.log('tweet after ' + diff + ' millisec...');
         yield new Promise((resolve,reject) => setTimeout(resolve, diff));
 
-        console.log("let's pigii!!!!!");
         const data = yield client.post('statuses/update', { status: pigii.random_pigii_string() })
 
-        console.log(`pigii finished. #${data.id} --> ${data.text}`);
+        console.log(`pigii finished: ${data.id}`);
         callback(null, data);
     })
     .catch(err => {
