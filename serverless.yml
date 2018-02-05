@@ -29,3 +29,8 @@ resources:
     MainLogGroup:
       Properties:
         RetentionInDays: 7
+
+    MainEventsRuleSchedule1:
+      Properties:
+        Name: "${self:service}"
+        Description: pigii
