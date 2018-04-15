@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "pigii!!!!!!",
   "dependencies": {
-    "aws-sdk": "^2.108.0",
-    "twitter": "^1.7.1",
-    "vo": "^4.0.2"
+    "twitter": "^1.7.1"
   },
   "devDependencies": {},
   "repository": {
