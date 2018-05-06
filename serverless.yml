@@ -15,10 +15,10 @@ functions:
     timeout: 300
     memorySize: 128
     environment:
-      PIGII_CONSUMER_KEY:        "${ssm:/pigii/consumer_key~true}"
-      PIGII_CONSUMER_SECRET:     "${ssm:/pigii/consumer_secret~true}"
-      PIGII_ACCESS_TOKEN:        "${ssm:/pigii/access_token_key~true}"
-      PIGII_ACCESS_TOKEN_SECRET: "${ssm:/pigii/access_token_secret~true}"
+      PIGII_CONSUMER_KEY:        "${ssm:/app/pigii/consumer_key~true}"
+      PIGII_CONSUMER_SECRET:     "${ssm:/app/pigii/consumer_secret~true}"
+      PIGII_ACCESS_TOKEN:        "${ssm:/app/pigii/access_token_key~true}"
+      PIGII_ACCESS_TOKEN_SECRET: "${ssm:/app/pigii/access_token_secret~true}"
     events:
       - schedule: "cron(58 2,14 * * ? *)"
 
