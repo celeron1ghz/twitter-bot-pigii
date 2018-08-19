@@ -29,6 +29,10 @@ resources:
       Properties:
         RetentionInDays: 7
 
+    IamRoleLambdaExecution:
+      Properties:
+        RoleName: "${self:service}"
+
     MainEventsRuleSchedule1:
       Properties:
         Name: "${self:service}"
