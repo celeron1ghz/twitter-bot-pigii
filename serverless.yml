@@ -1,8 +1,9 @@
 service: twitter-bot-pigii
+variablesResolutionMode: 20210326
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: go1.x
   stage: dev
   region: ap-northeast-1
   deploymentBucket: serverless-upload-ap-northeast-1
@@ -10,15 +11,15 @@ provider:
 
 functions:
   main:
-    handler: handler.main
+    handler: handler
     description: rubychan cry to twitter every 12 o'clock
     timeout: 300
     memorySize: 128
     environment:
-      PIGII_CONSUMER_KEY:        "${ssm:/app/pigii/consumer_key~true}"
-      PIGII_CONSUMER_SECRET:     "${ssm:/app/pigii/consumer_secret~true}"
-      PIGII_ACCESS_TOKEN:        "${ssm:/app/pigii/access_token_key~true}"
-      PIGII_ACCESS_TOKEN_SECRET: "${ssm:/app/pigii/access_token_secret~true}"
+      PIGII_CONSUMER_KEY:        "${ssm:/app/pigii/consumer_key}"
+      PIGII_CONSUMER_SECRET:     "${ssm:/app/pigii/consumer_secret}"
+      PIGII_ACCESS_TOKEN:        "${ssm:/app/pigii/access_token_key}"
+      PIGII_ACCESS_TOKEN_SECRET: "${ssm:/app/pigii/access_token_secret}"
     events:
       - schedule: "cron(58 2,14 * * ? *)"
 
@@ -26,14 +27,17 @@ resources:
   Description: rubychan cry to twitter every 12 o'clock
   Resources:
     MainLogGroup:
+      Type: AWS::Logs::LogGroup
       Properties:
         RetentionInDays: 7
 
     IamRoleLambdaExecution:
+      Type: AWS::IAM::Role
       Properties:
         RoleName: "${self:service}"
 
     MainEventsRuleSchedule1:
+      Type: AWS::Events::Rule
       Properties:
         Name: "${self:service}"
         Description: pigii
